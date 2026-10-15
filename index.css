@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body { @apply bg-[#050505] font-sans text-white antialiased; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { @apply rounded-lg bg-white/25; }
+}
+@layer components {
+  /* Black glass. Blur dibuat ringan di HP supaya scroll mulus, lebih tebal di layar besar */
+  .glass {
+    background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.035) 45%, rgba(255,255,255,.07));
+    border: 1px solid rgba(255,255,255,.14);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -1px 0 rgba(255,255,255,.04);
+  }
+  @media (min-width: 1024px) {
+    .glass { backdrop-filter: blur(22px) saturate(160%); -webkit-backdrop-filter: blur(22px) saturate(160%); }
+  }
+  .glow-hover { @apply transition duration-300 hover:border-sky-400 hover:shadow-[0_0_28px_rgba(255,255,255,.22)]; }
+}
